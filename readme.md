@@ -1,4 +1,4 @@
-<h1>Desafio de projeto do Felipão: Mario Kart.JS</h1>
+<h1>Desafio de projeto do Felipão: Alterando o Mario Kart JS</h1>
 
   <table>
         <tr>
@@ -6,9 +6,10 @@
                 <img src="./docs/header.gif" alt="Mario Kart" width="200">
             </td>
             <td>
-                <b>Objetivo:</b>
-                <p>Mario Kart é uma série de jogos de corrida desenvolvida e publicada pela Nintendo. Nosso desafio será criar uma lógica de um jogo de vídeo game para simular corridas de Mario Kart, levando em consideração as regras e mecânicas abaixo.</p>
+                <b>Contexto:</b>
+                <p>Foi desenvolvido uma lógica de um jogo de vídeo game para simular corridas de Mario Kart, o desafio é implementar novas funcionalidades para ele. O projeto inicial se encontra na branch <a href="https://github.com/Sandro-Pimentel/MarioKartJS/tree/base"> base </a> e o link para o repositório do instrutor que criou esse <a href="https://github.com/digitalinnovationone/formacao-nodejs/tree/main/03-projeto-mario-kart"> projeto base. <a></p>
             </td>
+            <td> </td>
         </tr>
     </table>
 
