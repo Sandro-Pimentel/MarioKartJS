@@ -1,18 +1,7 @@
-const player1 = {
-  NOME: "Mario",
-  VELOCIDADE: 4,
-  MANOBRABILIDADE: 3,
-  PODER: 3,
-  PONTOS: 0,
-};
+const characters = require("./characters");
 
-const player2 = {
-  NOME: "Luigi",
-  VELOCIDADE: 3,
-  MANOBRABILIDADE: 4,
-  PODER: 4,
-  PONTOS: 0,
-};
+const player1 = characters[0]
+const player2 = characters[4]
 
 async function rollDice() {
   return Math.floor(Math.random() * 6) + 1;
