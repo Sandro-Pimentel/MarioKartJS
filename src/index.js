@@ -1,13 +1,15 @@
-const characters = require("./characters");
+const characters = require("./data/characters");
+const items = require("./data/items");
+const roads = require("./data/roads");
 const { getInputNumber, getInputText } = require("./utils/prompt");
-const { logRollResult, logChooseCharacter } = require("./utils/logs");
-const { getRandomBlock, rollDice } = require("./random");
+const { logRollResult, logChooseCharacter, logChooseRoad, declareWinner } = require("./utils/logs");
+const { getRandomItem, rollDice, randomChoice, generateRoad } = require("./random");
 
-async function checkChoice(text) {
+async function checkChoice(text, array) {
   while(true) {
     choice = getInputNumber(text);
     
-    if(choice > 0 && choice <= characters.length) {
+    if(choice > 0 && choice <= array.length) {
       return choice;
     }
 
@@ -15,14 +17,31 @@ async function checkChoice(text) {
   }
 }
 
-async function playRaceEngine(character1, character2) {
-  for (let round = 1; round <= 5; round++) {
-    getInputText("Pressione ENTER para continuar...\n");
-    console.log(`🏁 Rodada ${round}`);
+async function checkRoadChoice(choice) {
+  if(choice.name === "Random generated") {
+    return await generateRoad();
+  }
+  
+  if(choice.name === "Random choice") {
+    return await randomChoice(roads);
+  }
+  
+  return choice;
+}
 
-    // sortear bloco
-    let block = await getRandomBlock();
-    console.log(`Bloco: ${block}`);
+async function playRaceEngine(character1, character2, road) {
+  let index = 0;
+
+  console.log(`🏁 Corrida em ${road.name} - ${road.rounds} rodadas 🏁\n`)
+
+  for (const round of road.blocks) {
+    // avançar as rodadas
+    index++;
+
+    getInputText("Pressione ENTER para continuar...\n");
+    console.log(`🏁 Rodada ${index}`);
+
+    console.log(`Bloco: ${round}`);
 
     // rolar os dados
     let diceResult1 = await rollDice();
@@ -32,7 +51,7 @@ async function playRaceEngine(character1, character2) {
     let totalTestSkill1 = 0;
     let totalTestSkill2 = 0;
 
-    if (block === "RETA") {
+    if (round === "RETA") {
       totalTestSkill1 = diceResult1 + character1.VELOCIDADE;
       totalTestSkill2 = diceResult2 + character2.VELOCIDADE;
 
@@ -57,7 +76,7 @@ async function playRaceEngine(character1, character2) {
       );
     }
 
-    if (block === "CURVA") {
+    if (round === "CURVA") {
       totalTestSkill1 = diceResult1 + character1.MANOBRABILIDADE;
       totalTestSkill2 = diceResult2 + character2.MANOBRABILIDADE;
 
@@ -82,11 +101,11 @@ async function playRaceEngine(character1, character2) {
       );
     }
 
-    if (block === "CONFRONTO") {
+    if (round === "CONFRONTO") {
       let powerResult1 = diceResult1 + character1.PODER;
       let powerResult2 = diceResult2 + character2.PODER;
 
-      console.log(`${character1.NOME} confrontou com ${character2.NOME}! 🥊`);
+      console.log(`${character1.NOME} confrontou ${character2.NOME}! 🥊`);
 
       await logRollResult(
         character1.NOME,
@@ -102,23 +121,43 @@ async function playRaceEngine(character1, character2) {
         character2.PODER
       );
 
-      if (powerResult1 > powerResult2 && character2.PONTOS > 0) {
-        console.log(
-          `${character1.NOME} venceu o confronto! ${character2.NOME} perdeu 1 ponto 🐢`
-        );
-        character2.PONTOS--;
+      const item = await getRandomItem(items);
+
+      if (powerResult1 > powerResult2 && character2.PONTOS > 0) {        
+        if(item.points > 0) {
+          character1.PONTOS+=item.points;
+          
+          console.log(
+            `\n${character1.NOME} venceu o confronto e ganhou ${item.name}, ${character1.NOME} ganhou ${item.points} ponto(s) ${item.emoji}`
+          );
+        } else {
+          character2.PONTOS+=item.points;
+
+          console.log(
+            `\n${character1.NOME} venceu o confronto e ganhou ${item.name}, ${character2.NOME} perdeu ${item.points * -1} ponto(s) ${item.emoji}`
+          );
+        }
       }
 
-      if (powerResult2 > powerResult1 && character1.PONTOS > 0) {
-        console.log(
-          `${character2.NOME} venceu o confronto! ${character1.NOME} perdeu 1 ponto 🐢`
-        );
-        character1.PONTOS--;
+      if (powerResult2 > powerResult1 && character1.PONTOS + item.points > 0) {
+        if(item.points > 0) {
+          character2.PONTOS+=item.points
+
+          console.log(
+            `\n${character2.NOME} venceu o confronto e ganhou ${item.name}, ${character2.NOME} ganhou ${item.points} ponto(s) ${item.emoji}`
+          );
+         } else { 
+          character1.PONTOS+=item.points;
+          
+          console.log(
+            `\n${character2.NOME} venceu o confronto e ganhou ${item.name}, ${character1.NOME} perdeu ${item.points * -1} ponto(s) ${item.emoji}`
+          );
+        }
       }
 
       console.log(
         powerResult2 === powerResult1
-          ? "Confronto empatado! Nenhum ponto foi perdido"
+          ? "\nConfronto empatado! Nenhum ponto foi perdido"
           : ""
       );
     }
@@ -136,32 +175,28 @@ async function playRaceEngine(character1, character2) {
   }
 }
 
-async function declareWinner(character1, character2) {
-  console.log("Resultado final:");
-  console.log(`${character1.NOME}: ${character1.PONTOS} ponto(s)`);
-  console.log(`${character2.NOME}: ${character2.PONTOS} ponto(s)`);
-
-  if (character1.PONTOS > character2.PONTOS)
-    console.log(`\n${character1.NOME} venceu a corrida! Parabéns! 🏆`);
-  else if (character2.PONTOS > character1.PONTOS)
-    console.log(`\n${character2.NOME} venceu a corrida! Parabéns! 🏆`);
-  else console.log("A corrida terminou em empate");
-}
-
 (async function main() {
   await logChooseCharacter();
 
-  const choice1 = await checkChoice("Escolha o primeiro personagem: ") - 1;
-  const choice2 = await checkChoice("Escolha o segundo personagem: ") - 1;
+  const playerChoice1 = await checkChoice("Escolha o primeiro personagem: ", characters) - 1;
+  const playerChoice2 = await checkChoice("Escolha o segundo personagem: ", characters) - 1;
 
-  const player1 = characters[choice1];
-  const player2 = characters[choice2];
+  const player1 = characters[playerChoice1];
+  const player2 = characters[playerChoice2];
+
+  await logChooseRoad();
+
+  const roadChoice = await checkChoice("Escolha a pista: ", roads) - 1;
+
+  console.log(`Opção escolhida: ${roads[roadChoice].name}`)
+
+  const road = await checkRoadChoice(roads[roadChoice]);
 
   console.log(
-    `🏁🚨 Corrida entre ${player1.NOME} e ${player2.NOME} começando...\n`
+    `\n🚨 Corrida entre ${player1.NOME} e ${player2.NOME} começando... 🚨\n`
   );
 
-  await playRaceEngine(player1, player2);
+  await playRaceEngine(player1, player2, road);
 
   getInputText("Pressione ENTER para continuar...\n"); 
 
