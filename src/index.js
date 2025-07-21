@@ -1,40 +1,23 @@
 const characters = require("./characters");
+const { getInputNumber, getInputText } = require("./utils/prompt");
+const { logRollResult, logChooseCharacter } = require("./utils/logs");
+const { getRandomBlock, rollDice } = require("./random");
 
-const player1 = characters[0]
-const player2 = characters[4]
+async function checkChoice(text) {
+  while(true) {
+    choice = getInputNumber(text);
+    
+    if(choice > 0 && choice <= characters.length) {
+      return choice;
+    }
 
-async function rollDice() {
-  return Math.floor(Math.random() * 6) + 1;
-}
-
-async function getRandomBlock() {
-  let random = Math.random();
-  let result;
-
-  switch (true) {
-    case random < 0.33:
-      result = "RETA";
-      break;
-    case random < 0.66:
-      result = "CURVA";
-      break;
-    default:
-      result = "CONFRONTO";
+    console.log("Escolha inválida, tente novamente");
   }
-
-  return result;
-}
-
-async function logRollResult(characterName, block, diceResult, attribute) {
-  console.log(
-    `${characterName} 🎲 rolou um dado de ${block} ${diceResult} + ${attribute} = ${
-      diceResult + attribute
-    }`
-  );
 }
 
 async function playRaceEngine(character1, character2) {
   for (let round = 1; round <= 5; round++) {
+    getInputText("Pressione ENTER para continuar...\n");
     console.log(`🏁 Rodada ${round}`);
 
     // sortear bloco
@@ -66,6 +49,12 @@ async function playRaceEngine(character1, character2) {
         diceResult2,
         character2.VELOCIDADE
       );
+
+      console.log(
+        totalTestSkill2 === totalTestSkill1
+          ? "Empate na reta, ninguém pontuou!"
+          : ""
+      );
     }
 
     if (block === "CURVA") {
@@ -84,6 +73,12 @@ async function playRaceEngine(character1, character2) {
         "manobrabilidade",
         diceResult2,
         character2.MANOBRABILIDADE
+      );
+
+      console.log(
+        totalTestSkill2 === totalTestSkill1
+          ? "Curva acirrada, ninguém pontuou!"
+          : ""
       );
     }
 
@@ -154,10 +149,21 @@ async function declareWinner(character1, character2) {
 }
 
 (async function main() {
+  await logChooseCharacter();
+
+  const choice1 = await checkChoice("Escolha o primeiro personagem: ") - 1;
+  const choice2 = await checkChoice("Escolha o segundo personagem: ") - 1;
+
+  const player1 = characters[choice1];
+  const player2 = characters[choice2];
+
   console.log(
     `🏁🚨 Corrida entre ${player1.NOME} e ${player2.NOME} começando...\n`
   );
 
   await playRaceEngine(player1, player2);
+
+  getInputText("Pressione ENTER para continuar...\n"); 
+
   await declareWinner(player1, player2);
 })();

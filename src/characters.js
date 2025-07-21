@@ -1,3 +1,4 @@
+// separando os personagens
 const characters = [
     {
         NOME: "Mario",
