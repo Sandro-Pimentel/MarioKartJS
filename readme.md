@@ -1,16 +1,15 @@
 <h1>Desafio de projeto do Felipão: Alterando o Mario Kart JS</h1>
 
   <table>
-      <tr>
-          <td>
-              <img src="./docs/header.gif" alt="Mario Kart" width="200">
-          </td>
-          <td>
-              <b>Contexto:</b>
-
-<p>Foi desenvolvido uma lógica de um jogo de vídeo game para simular corridas de Mario Kart, o desafio é implementar novas funcionalidades para ele. O projeto inicial se encontra na branch <a href="https://github.com/Sandro-Pimentel/MarioKartJS/tree/base"> base </a> e o link para o repositório do instrutor que criou esse <a href="https://github.com/digitalinnovationone/formacao-nodejs/tree/main/03-projeto-mario-kart"> projeto base.</a> Essa branch tem uma visao geral do produto final, caso queira ver especificamente as features adicionadas verifique a branch <a href="https://github.com/Sandro-Pimentel/MarioKartJS/tree/alteracoes"> alteracoes. </a></p>
-          </td>
-          <td> </td>
+        <tr>
+            <td>
+                <img src="./docs/header.gif" alt="Mario Kart" width="200">
+            </td>
+            <td>
+                <b>Contexto:</b>
+                <p>Foi desenvolvido uma lógica de um jogo de vídeo game para simular corridas de Mario Kart, o desafio é implementar novas funcionalidades para ele. O projeto inicial se encontra na branch <a href="https://github.com/Sandro-Pimentel/MarioKartJS/tree/base"> base </a> e o link para o repositório do instrutor que criou esse <a href="https://github.com/digitalinnovationone/formacao-nodejs/tree/main/03-projeto-mario-kart"> projeto base. </a></p>
+            </td>
+            <td> </td>
         </tr>
     </table>
 
@@ -89,6 +88,7 @@
 
 <p></p>
 
+
 <h2>Pistas</h2>
     <table style="border-collapse: collapse; width: 800px; margin: 0 auto;">
         <tr>
@@ -117,13 +117,14 @@
         </tr>
     </table>
 
-<h3>🕹️ Regras & mecânicas:</h3>
+    
+<h3>🕹️ Novas Regras & mecânicas:</h3>
 
 <b>Jogadores:</b>
 
 <ul>
-  <li><label for="jogadores-item">O Computador deve receber dois personagens para disputar a corrida em um objeto cada</label></li>
-  <li><label for="jogadores-item">É possível escolher dois personagens para disputar a corrida através do prompt de comando</label></li>
+    <li><label for="jogadores-item">Personagem toad adicionado</label></li>
+    <li><label for="jogadores-item">É possível escolher dois personagens para disputar a corrida através do prompt de comando</label></li>
 </ul>
 
 <b>Pistas:</b>
@@ -137,9 +138,8 @@
 <b>Itens:</b>
 
 <ul>
-    <li><label for="itens-1-item">Existem 3 itens no confronto:</label></li>
+    <li><label for="itens-1-item">Existem 2 novos itens:</label></li>
     <ul>
-        <li><b>🐢 Casco: </b> Tira um ponto do perdedor do CONFRONTO</li>
         <li><b>💣 Bomba: </b> Tira dois pontos do perdedor do CONFRONTO</li>
         <li><b>🍄 Cogumelo: </b> Adiciona um ponto para o vencedor do CONFRONTO</li>
     </ul>
@@ -150,19 +150,3 @@
 <ul>
     <li><label for="itens-1-item">Se o corredor que perdeu o confronto tem 0 pontos, nenhum item é recebido</label></li>
 </ul>
-
-<input type="checkbox" id="vitoria-item" />
-<label for="vitoria-item">Ao final, vence quem acumulou mais pontos</label>
-
-<h1> Como rodar </h1>
-
-Ao baixar o projeto instale as dependências com:
-```
-npm install
-```
-
-Para rodar a aplicação use o comando:
-
-```
-npm run start
-```
