@@ -42,6 +42,13 @@ const characters = [
         PODER: 3,
         PONTOS: 0,
     },
+    {
+        NOME: "Toad",
+        VELOCIDADE: 3,
+        MANOBRABILIDADE: 4,
+        PODER: 3,
+        PONTOS: 0,
+    },
 ];
 
 module.exports = characters;

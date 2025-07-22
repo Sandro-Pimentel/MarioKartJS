@@ -13,7 +13,7 @@ const roads = [
     {
         name: "Toad's Factory",
         rounds: 5,
-        blocks: ["RETA", "CURVA", "CONFRONTO", "CURVA", "reta"],
+        blocks: ["RETA", "CURVA", "CONFRONTO", "CURVA", "RETA"],
     },
     {
         name: "Wario's Gold Mine",
