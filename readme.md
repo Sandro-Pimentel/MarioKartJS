@@ -7,14 +7,16 @@
             </td>
             <td>
                 <b>Contexto:</b>
+
                 <p>Foi desenvolvido uma lógica de um jogo de vídeo game para simular corridas de Mario Kart, o desafio é implementar novas funcionalidades para ele. O projeto inicial se encontra na branch <a href="https://github.com/Sandro-Pimentel/MarioKartJS/tree/base"> base </a> e o link para o repositório do instrutor que criou esse <a href="https://github.com/digitalinnovationone/formacao-nodejs/tree/main/03-projeto-mario-kart"> projeto base.</a> Essa branch tem uma visao geral do produto final, caso queira ver especificamente as features adicionadas verifique a branch <a href="https://github.com/Sandro-Pimentel/MarioKartJS/tree/alteracoes"> alteracoes. </a></p>
+
             </td>
             <td> </td>
         </tr>
     </table>
 
 <h2>Players</h2>
-      <table style="border-collapse: collapse; width: 800px; margin: 0 auto;">
+    <table style="border-collapse: collapse; width: 800px; margin: 0 auto;">
         <tr>
             <td style="border: 1px solid black; text-align: center;">
                 <p>Mario</p>
@@ -131,13 +133,6 @@
   <li><label for="pistas-1-item">É possível escolher entre 5 pistas pré-estabelecidas, escolher uma aleatoriamente ou gerar uma pista aleatória</label></li>
   <li><label for="pistas-2-item">As pistas pré-estabelecidas já possuem seus blocos de RETA, CURVA e CONFRONTO</label></li>
   <li><label for="pistas-2-item">As pistas geradas aleatoriamente podem possuir de 1 a 10 rodadas, com cada rodada sendo um bloco de RETA, CURVA ou CONFRONTO escolhido aleatoriamente</label></li>
-  <li><input type="checkbox" id="pistas-2-item" /> <label for="pistas-2-item">A cada rodada, será sorteado um bloco da pista que pode ser uma reta, curva ou confronto</label>
-    <ul>
-      <li><input type="checkbox" id="pistas-2-1-item" /> <label for="pistas-2-1-item">Caso o bloco da pista seja uma RETA, o jogador deve jogar um dado de 6 lados e somar o atributo VELOCIDADE, quem vencer ganha um ponto</label></li>
-      <li><input type="checkbox" id="pistas-2-2-item" /> <label for="pistas-2-2-item">Caso o bloco da pista seja uma CURVA, o jogador deve jogar um dado de 6 lados e somar o atributo MANOBRABILIDADE, quem vencer ganha um ponto</label></li>
-      <li><input type="checkbox" id="pistas-2-3-item" /> <label for="pistas-2-3-item">Caso o bloco da pista seja um CONFRONTO, o jogador deve jogar um dado de 6 lados e somar o atributo PODER, quem perder, perde um ponto</label></li>
-      <li><input type="checkbox" id="pistas-2-3-item" /> <label for="pistas-2-3-item">Nenhum jogador pode ter pontuação negativa (valores abaixo de 0)</label></li>
-    </ul>
 </ul>
 
 <b>Itens:</b>
@@ -156,8 +151,6 @@
 <ul>
     <li><label for="itens-1-item">Se o corredor que perdeu o confronto tem 0 pontos, nenhum item é recebido</label></li>
 </ul>
-
-<b>Condição de vitória:</b>
 
 <input type="checkbox" id="vitoria-item" />
 <label for="vitoria-item">Ao final, vence quem acumulou mais pontos</label>
