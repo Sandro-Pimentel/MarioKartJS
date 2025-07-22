@@ -161,3 +161,16 @@
 
 <input type="checkbox" id="vitoria-item" />
 <label for="vitoria-item">Ao final, vence quem acumulou mais pontos</label>
+
+<h1> Como rodar </h1>
+
+Ao baixar o projeto instale as dependências com:
+```
+npm install
+```
+
+Para rodar a aplicação use o comando:
+
+```
+npm run start
+```
