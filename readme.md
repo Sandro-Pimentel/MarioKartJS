@@ -1,17 +1,16 @@
 <h1>Desafio de projeto do Felipão: Alterando o Mario Kart JS</h1>
 
   <table>
-        <tr>
-            <td>
-                <img src="./docs/header.gif" alt="Mario Kart" width="200">
-            </td>
-            <td>
-                <b>Contexto:</b>
+      <tr>
+          <td>
+              <img src="./docs/header.gif" alt="Mario Kart" width="200">
+          </td>
+          <td>
+              <b>Contexto:</b>
 
-                <p>Foi desenvolvido uma lógica de um jogo de vídeo game para simular corridas de Mario Kart, o desafio é implementar novas funcionalidades para ele. O projeto inicial se encontra na branch <a href="https://github.com/Sandro-Pimentel/MarioKartJS/tree/base"> base </a> e o link para o repositório do instrutor que criou esse <a href="https://github.com/digitalinnovationone/formacao-nodejs/tree/main/03-projeto-mario-kart"> projeto base.</a> Essa branch tem uma visao geral do produto final, caso queira ver especificamente as features adicionadas verifique a branch <a href="https://github.com/Sandro-Pimentel/MarioKartJS/tree/alteracoes"> alteracoes. </a></p>
-
-            </td>
-            <td> </td>
+<p>Foi desenvolvido uma lógica de um jogo de vídeo game para simular corridas de Mario Kart, o desafio é implementar novas funcionalidades para ele. O projeto inicial se encontra na branch <a href="https://github.com/Sandro-Pimentel/MarioKartJS/tree/base"> base </a> e o link para o repositório do instrutor que criou esse <a href="https://github.com/digitalinnovationone/formacao-nodejs/tree/main/03-projeto-mario-kart"> projeto base.</a> Essa branch tem uma visao geral do produto final, caso queira ver especificamente as features adicionadas verifique a branch <a href="https://github.com/Sandro-Pimentel/MarioKartJS/tree/alteracoes"> alteracoes. </a></p>
+          </td>
+          <td> </td>
         </tr>
     </table>
 
