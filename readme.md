@@ -73,21 +73,64 @@
                 <p>Poder: 5</p>
             </td>
         </tr>
+        <tr>
+            <td style="border: 1px solid black; text-align: center;">
+                <p>Toad</p>
+                <img src="./docs/toad.gif" alt="Mario Kart" width="60" height="60">
+            </td>
+            <td style="border: 1px solid black; text-align: center;">
+                <p>Velocidade: 3</p>
+                <p>Manobrabilidade: 4</p>
+                <p>Poder: 3</p>
+            </td>
+        </tr>
     </table>
 
 <p></p>
+
+<h2>Pistas</h2>
+    <table style="border-collapse: collapse; width: 800px; margin: 0 auto;">
+        <tr>
+            <td style="border: 1px solid black; text-align: center;">
+                <p>Mario Circuit - 1 rodada</p>
+                <img src="./docs/mariocircuit.png" alt="Mario Kart" width="350" height="100">
+            </td>
+             <td style="border: 1px solid black; text-align: center;">
+                <p>Moo Moo Meadows - 3 rodadas</p>
+                <img src="./docs/moomoomeadows.png" alt="Mario Kart" width="350" height="100">
+            </td>
+            <td style="border: 1px solid black; text-align: center;">
+                <p>Toad's Factory - 5 rodadas</p>
+                <img src="./docs/toadsfactory.png" alt="Mario Kart" width="350" height="100">
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid black; text-align: center;">
+                <p>Wario's Gold Mine - 7 rodadas</p>
+                <img src="./docs/wariosgoldmine.png" alt="Mario Kart" width="350" height="100">
+            </td>
+            <td style="border: 1px solid black; text-align: center;">
+                <p>Rainbow Road - 10 rodadas</p>
+                <img src="./docs/rainbowroad.png" alt="Mario Kart" width="350" height="100">
+            </td>
+        </tr>
+    </table>
 
 <h3>🕹️ Regras & mecânicas:</h3>
 
 <b>Jogadores:</b>
 
-<input type="checkbox" id="jogadores-item" />
-<label for="jogadores-item">O Computador deve receber dois personagens para disputar a corrida em um objeto cada</label>
+<ul>
+  <li><label for="jogadores-item">O Computador deve receber dois personagens para disputar a corrida em um objeto cada</label></li>
+  <li><label for="jogadores-item">É possível escolher dois personagens para disputar a corrida através do prompt de comando</label></li>
+</ul>
 
 <b>Pistas:</b>
 
 <ul>
-  <li><input type="checkbox" id="pistas-1-item" /> <label for="pistas-1-item">Os personagens irão correr em uma pista aleatória de 5 rodadas</label></li>
+  <li><label for="pistas-1-item">É possível escolher entre 5 pistas pré-estabelecidas, escolher uma aleatoriamente ou gerar uma pista aleatória</label></li>
+  <li><label for="pistas-2-item">As pistas pré-estabelecidas já possuem seus blocos de RETA, CURVA e CONFRONTO</label></li>
+  <li><label for="pistas-2-item">As pistas geradas aleatoriamente podem possuir de 1 a 10 rodadas, com cada rodada sendo um bloco de RETA, CURVA ou CONFRONTO escolhido aleatoriamente</label></li>
   <li><input type="checkbox" id="pistas-2-item" /> <label for="pistas-2-item">A cada rodada, será sorteado um bloco da pista que pode ser uma reta, curva ou confronto</label>
     <ul>
       <li><input type="checkbox" id="pistas-2-1-item" /> <label for="pistas-2-1-item">Caso o bloco da pista seja uma RETA, o jogador deve jogar um dado de 6 lados e somar o atributo VELOCIDADE, quem vencer ganha um ponto</label></li>
@@ -95,7 +138,23 @@
       <li><input type="checkbox" id="pistas-2-3-item" /> <label for="pistas-2-3-item">Caso o bloco da pista seja um CONFRONTO, o jogador deve jogar um dado de 6 lados e somar o atributo PODER, quem perder, perde um ponto</label></li>
       <li><input type="checkbox" id="pistas-2-3-item" /> <label for="pistas-2-3-item">Nenhum jogador pode ter pontuação negativa (valores abaixo de 0)</label></li>
     </ul>
-  </li>
+</ul>
+
+<b>Itens:</b>
+
+<ul>
+    <li><label for="itens-1-item">Existem 3 itens no confronto:</label></li>
+    <ul>
+        <li><b>🐢 Casco: </b> Tira um ponto do perdedor do CONFRONTO</li>
+        <li><b>💣 Bomba: </b> Tira dois pontos do perdedor do CONFRONTO</li>
+        <li><b>🍄 Cogumelo: </b> Adiciona um ponto para o vencedor do CONFRONTO</li>
+    </ul>
+</ul>
+
+<b>Regras:</b>
+
+<ul>
+    <li><label for="itens-1-item">Se o corredor que perdeu o confronto tem 0 pontos, nenhum item é recebido</label></li>
 </ul>
 
 <b>Condição de vitória:</b>
